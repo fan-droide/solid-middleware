@@ -41,7 +41,9 @@ app.post('/upload-file', async (req, res) => {
       let folder = req.body.folder || 'uploads'     
       let id =  req.body.clientId
       let secret =  req.body.clientSecret
-      const auth = await getAuth(id, secret)
+      let issuer =  req.body.issuer
+      let resource =  req.body.resource
+      const auth = await getAuth(id, secret, issuer, resource)
       //console.log(auth.status) // if status === 200 upload file
       console.log(auth)
       //Use the mv() method to place the file in the upload directory (i.e. 'uploads')      
